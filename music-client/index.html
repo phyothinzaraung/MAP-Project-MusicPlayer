@@ -45,7 +45,45 @@
         </div>
     </div>
 
-    <footer class = "audioPlayer">
+    <footer class="audioFooter" id="myAudioFooter">
+        <div class="controlButtons">
+            <button id="repeatButton">
+                <img src="images/repeat-once-off.png">
+            </button>            
+            <button id="preButton">
+                <img src="images/prev.png">
+            </button>
+
+            <button id="playPauseButton">
+                <img src="images/play.png">
+            </button>
+
+            <button id="nextButton">
+                <img src="images/next.png">
+            </button>
+
+            <button id="shuffleButton">
+                <img src="images/shuffle_off.png">
+            </button>
+        </div>
+        
+        <div></div>
+        <div class="remaining-content">
+            <div>
+                <audio id="audioPlayer" src=""></audio>
+                <div><p id="musicTitle">No Title</p></div>
+                
+                <div><input type="range" id="seekBar" min="0" value="0"></div>
+                <div class="bar-title">
+                    <span id="currentTime">00:00</span>
+                    <span id="duration">00:00</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+        
+
+    <!-- <footer class = "audioPlayer">
         <div id="myaudioplayer">
             <div class="container">
                 <audio id="audioPlayer" src=""></audio>
@@ -81,7 +119,7 @@
                     </button>
 
                 </div>
-                <!-- <input type="checkbox" id="shuffle"> Shuffle -->
+                <input type="checkbox" id="shuffle"> Shuffle 
                 <select id="repeatStep">
                     <option value=1>Normal</option>
                     <option value=2>Repeat All</option>
@@ -91,7 +129,7 @@
                 </div>
             </div>
         </div>
-    </footer>
+    </footer> -->
 
 </body>
 

@@ -9,6 +9,7 @@ var musicTitleMsg;
 var currentIndex;
 var myPlaylist;
 var shuffle = false;
+var repeatOnce = false;
 
 window.onload = function () {
     document.getElementById('loginBtn').onclick = login;
@@ -40,19 +41,27 @@ function playNow() {
         song = myPlaylist[currentIndex];
         play(song.urlPath,song.title,currentIndex);
     }
-    else {
-        var step = getRepeatStep();
-        if(step == 2) {
-            currentIndex = 0;
-            playNow();
-        }
+    // else {
+    //     if(isRepeatOnce()) {
+    //         currentIndex = 0;
+    //         playNow();
+    //     }
+    //     // var step = getRepeatStep();
+    //     // if(step == 2) {
+    //     //     currentIndex = 0;
+    //     //     playNow();
+    //     // }
 
-    }
+    // }
 }
 
 function isShuffle() {
     return shuffle;
 
+}
+
+function isRepeatOnce() {
+    return repeatOnce;
 }
 
 function initPlayerView() {
@@ -67,6 +76,17 @@ function initPlayerView() {
 
     nextButton = document.getElementById("nextButton");
     preButton = document.getElementById("preButton");
+    var repeatButton = document.getElementById("repeatButton");
+    
+    repeatButton.addEventListener('click', function() {
+        if(repeatOnce) {
+            repeatButton.innerHTML = '<img src="images/repeat-once-off.png">';
+        } else {
+            repeatButton.innerHTML = '<img src="images/repeat-once-on.png">';
+        }
+
+        repeatOnce = !repeatOnce;
+    });
 
     var shuffleButton = document.getElementById("shuffleButton");
 
@@ -108,6 +128,8 @@ function initPlayerView() {
 
 
 
+
+
     audioPlayer.addEventListener('timeupdate', function () {
         const currentTime = formatTime(audioPlayer.currentTime);
         currentTimeDisplay.textContent = currentTime;
@@ -121,10 +143,13 @@ function initPlayerView() {
         seekBar.value = progress;
 
         if(audioPlayer.currentTime == audioPlayer.duration) {
-            var step = getRepeatStep();
-            if(step != 3) {
+            if(!isRepeatOnce()) {
                 currentIndex = currentIndex + 1;
             }
+            // var step = getRepeatStep();
+            // if(step != 3) {
+            //     currentIndex = currentIndex + 1;
+            // }
             playNow();
         }
 
@@ -155,6 +180,7 @@ function prev() {
     else {
         currentIndex = currentIndex - 1;
     }
+
     if(currentIndex < 0 ) {
         currentIndex = 0;
     }
@@ -205,7 +231,8 @@ function showAfterLogin() {
     document.getElementById('loginForm').style.display = 'none';
     document.getElementById('main-content').style.display = 'block';
     document.getElementById('welcome-logout-content').style.display = 'block';
-    document.getElementById('myaudioplayer').style.display = 'block';
+    document.getElementById('myAudioFooter').style.display = 'flex';
+    // document.getElementById('myaudioplayer').style.display = 'block';
     document.getElementById('welcome').innerText = `Welcome to the Music Box, ${sessionStorage.getItem('username')}  `;
     fetchSongs();
     loadMyPlaylist("");
@@ -215,6 +242,7 @@ function showAfterLogout() {
     document.getElementById('loginForm').style.display = 'block';
     document.getElementById('main-content').style.display = 'none';
     document.getElementById('welcome-logout-content').style.display = 'none';
+    document.getElementById('myAudioFooter').style.display = 'none';
 }
 
 

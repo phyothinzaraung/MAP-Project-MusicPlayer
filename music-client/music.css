@@ -116,6 +116,7 @@ tr:nth-child(even) {
 #seekBar {
   width: 100%;
   height: 20px;
+  accent-color: rgb(255, 30, 83);
 }
 
 #state {
@@ -123,14 +124,15 @@ tr:nth-child(even) {
 }
 
 .bar-title {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
 }
 
 #musicTitle {
-  /* font-weight: bold; */
-  font-size: 16px;
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
 }
 
 /* .music-container {
@@ -138,7 +140,7 @@ tr:nth-child(even) {
 } */
 
 #mainbody {
-  margin-bottom: 300px;
+  margin-bottom: 80px;
 }
 
 .login-form form {
@@ -176,10 +178,54 @@ strong {
 
 #welcome {
   font-size: 20px;
-  color: rgb(255, 30, 83);
+  color: #ff1e53;
 }
 
 #logoutBtn {
   padding: 5px 10px;
   height: 35px;
+}
+
+.audioFooter {
+  display: none;
+  flex-direction: row-reverse;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  background-color: #f2f2f2;
+}
+
+.controlButtons {
+  display: flex;
+  flex-direction: row;
+}
+
+.controlButtons button {
+  margin-bottom: 10px;
+  border: 0px;
+  background-color: transparent;
+}
+
+.controlButtons button img {
+  width: 30px;
+  height: 30px;
+}
+
+.remaining-content {
+  /* background-color: rgb(225, 224, 224); */
+  flex-grow: 1;
+  padding-right: 50px;
+  /* height: 100px; */
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px; /* Adjust the height as needed */
+}
+
+.image-container img {
+  max-width: 90%;
+  max-height: 90%;
 }
