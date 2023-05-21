@@ -13,32 +13,39 @@
 <body>
     <header>
         <div class="logo">
-          <img src="./images/logo.png" alt="Logo">
-          <strong><i>Music Box</i></strong>
+            <img src="./images/logo.png" alt="Logo">
+            <strong>
+                <i>Music Box</i>
+            </strong>
         </div>
         <div id="loginForm" class="login-form">
-            <input type="text" id="username" placeholder="username"/>
-            <input type="password" id="password" placeholder="password"/>
+            <input type="text" id="username" placeholder="username" />
+            <input type="password" id="password" placeholder="password" />
             <button id="loginBtn">Login</button>
-            <div id="err"></div> 
+            <div id="err"></div>
         </div>
         <div id="welcome-logout-content">
             <b id="welcome"></b>
             <button id="logoutBtn">Logout</button>
         </div>
-      </header>
-      
-    <div class="container" id="mainbody">
+    </header>
 
-        <div id="main-content">
-            <h2>Playlist</h2>
+      <div id="main-content">
+
+    <div class="container" id="mainbody">
+        <div class="table-container">
+            <h2>Songs</h2>
             <table id="songs">
             </table>
+        </div>
+        <div class="table-container">
             <h2>My Playlist</h2>
             <table id="myPlaylist">
             </table>
         </div>
     </div>
+    </div>
+
     <div id="myaudioplayer">
         <div class="container">
             <audio id="audioPlayer" src=""></audio>
