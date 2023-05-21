@@ -12,10 +12,11 @@ var shuffle = false;
 
 window.onload = function () {
     document.getElementById('loginBtn').onclick = login;
-    if (sessionStorage.getItem('my-token') != "") {
-        showAfterLogin();
-        initPlayerView();
-    }
+    document.getElementById('logoutBtn').onclick = logout;
+    // if (sessionStorage.getItem('my-token') != "") {
+    //     showAfterLogin();
+    //     initPlayerView();
+    // }
 
 }
 
@@ -30,6 +31,7 @@ function getRepeatStep() {
 function logout() {
     sessionStorage.setItem('my-token', "");
     sessionStorage.setItem('username', "");
+    showAfterLogout();
 
 }
 
@@ -193,7 +195,7 @@ async function login() {
         sessionStorage.setItem('my-token', result.accessToken);
         sessionStorage.setItem('username', result.username);
         showAfterLogin();
-
+        initPlayerView();
     }
 }
 
@@ -207,6 +209,12 @@ function showAfterLogin() {
     loadMyPlaylist("");
 }
 
+function showAfterLogout() {
+
+
+    document.getElementById('loginForm').style.display = 'block';
+    document.getElementById('main-content').style.display = 'none';
+}
 
 
 
