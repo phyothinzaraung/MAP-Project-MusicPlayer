@@ -30,80 +30,68 @@
         </div>
     </header>
 
-      <div id="main-content">
-
-    <div class="container" id="mainbody">
-        <div class="table-container">
-            <h2>Songs</h2>
-            <table id="songs">
-            </table>
-        </div>
-        <div class="table-container">
-            <h2>My Playlist</h2>
-            <table id="myPlaylist">
-            </table>
+    <div id="main-content">
+        <div class="container" id="mainbody">
+            <div class="table-container">
+                <h2>Songs</h2>
+                <table id="songs">
+                </table>
+            </div>
+            <div class="table-container">
+                <h2>My Playlist</h2>
+                <table id="myPlaylist">
+                </table>
+            </div>
         </div>
     </div>
-    </div>
 
-    <div id="myaudioplayer">
-        <div class="container">
-            <audio id="audioPlayer" src=""></audio>
+    <footer class = "audioPlayer">
+        <div id="myaudioplayer">
+            <div class="container">
+                <audio id="audioPlayer" src=""></audio>
 
-            <div class="bar-title">
-                <span id="musicTitle">No Title</span>
-                <div>
-                    <span class="progress">
-                        <span id="currentTime">00:00</span>
-                        /
-                        <span id="duration">00:00</span>
-                    </span>
+                <div class="bar-title">
+                    <span id="musicTitle">No Title</span>
+                    <div>
+                        <span class="progress">
+                            <span id="currentTime">00:00</span>
+                            /
+                            <span id="duration">00:00</span>
+                        </span>
+                    </div>
+                </div>
+
+                <input type="range" id="seekBar" min="0" value="0">
+
+                <div id="moveCenter">
+                    <button id="preButton" class='btn'>
+                        <img src="images/prev.png">
+                    </button>
+
+                    <button id="playPauseButton" class='btn'>
+                        <img src="images/play.png">
+                    </button>
+
+                    <button id="nextButton" class='btn'>
+                        <img src="images/next.png">
+                    </button>
+
+                    <button id="shuffleButton" class='btn'>
+                        <img src="images/shuffle_off.png">
+                    </button>
+
+                </div>
+                <!-- <input type="checkbox" id="shuffle"> Shuffle -->
+                <select id="repeatStep">
+                    <option value=1>Normal</option>
+                    <option value=2>Repeat All</option>
+                    <option value=3>Repeat One</option>
+                </select>
+                <div id="state">
                 </div>
             </div>
-
-            <input type="range" id="seekBar" min="0" value="0">
-
-            <div id="moveCenter">
-                <button id="preButton" class='btn'>
-                    <img src="images/prev.png">
-                </button>
-
-                <button id="playPauseButton" class='btn'>
-                    <img src="images/play.png">
-                </button>
-
-                <button id="nextButton" class='btn'>
-                    <img src="images/next.png">
-                </button>
-
-                <button id="shuffleButton" class='btn'>
-                    <img src="images/shuffle_off.png">
-                </button>
-
-            </div>
-
-
-
-            <!-- <input type="checkbox" id="shuffle"> Shuffle -->
-
-
-            <select id="repeatStep">
-                <option value=1>Normal</option>
-                <option value=2>Repeat All</option>
-                <option value=3>Repeat One</option>
-            </select>
-
-
-
-
-            <div id="state">
-
-            </div>
-
-
         </div>
-
-    </div>
+    </footer>
 
 </body>
 
