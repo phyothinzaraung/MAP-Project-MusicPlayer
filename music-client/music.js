@@ -205,6 +205,7 @@ function showAfterLogin() {
     document.getElementById('loginForm').style.display = 'none';
     document.getElementById('main-content').style.display = 'block';
     document.getElementById('welcome-logout-content').style.display = 'block';
+    document.getElementById('myaudioplayer').style.display = 'block';
     document.getElementById('welcome').innerText = `Welcome to the Music Box, ${sessionStorage.getItem('username')}  `;
     fetchSongs();
     loadMyPlaylist("");
@@ -271,8 +272,8 @@ async function fetchSongs() {
 
     let html = `
             <tr>
-                <th>title</th>
-                <th>releaseDate</th>
+                <th>Title</th>
+                <th>Release Date</th>
                 <th>Action</th>
             </tr>
         `;
@@ -281,7 +282,7 @@ async function fetchSongs() {
         <tr>
             <td>${song.title}</td>
             <td>${song.releaseDate}</td>
-            <td><a href='#' onclick="addevent('${song.id}')">+</a></td>
+            <td><a href='#' onclick="addevent('${song.id}')">Add to playlist</a></td>
         </tr>
         `;
         document.getElementById('songs').innerHTML = html;
@@ -325,7 +326,8 @@ async function loadMyPlaylist(songID) {
 
     let html = `
             <tr>
-                <th>title</th>
+                <th>Title</th>
+                <th>Remove</th>
                 <th>Action</th>
             </tr>
         `;
@@ -340,9 +342,8 @@ async function loadMyPlaylist(songID) {
         html += `
         <tr>
             <td>${song.title}</td>
-            <td><a href='#' onclick="removeSong('${song.id}')">-</a> ,
-            <a href="" onclick="return playClick(event,'${song.urlPath}','${song.title}',${pIndex})">Play</a>
-            </td>
+            <td><a href='#' onclick="removeSong('${song.id}')">Remove from list</a></td>
+            <td><a href="" onclick="return playClick(event,'${song.urlPath}','${song.title}',${pIndex})">Play</a></td>
         </tr>
         `;
         pIndex = pIndex + 1;
