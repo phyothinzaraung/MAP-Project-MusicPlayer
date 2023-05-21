@@ -204,16 +204,16 @@ function showAfterLogin() {
 
     document.getElementById('loginForm').style.display = 'none';
     document.getElementById('main-content').style.display = 'block';
-    document.getElementById('welcome').innerText = `Welcome, ${sessionStorage.getItem('username')}`;
+    document.getElementById('welcome-logout-content').style.display = 'block';
+    document.getElementById('welcome').innerText = `Welcome to the Music Box, ${sessionStorage.getItem('username')}  `;
     fetchSongs();
     loadMyPlaylist("");
 }
 
 function showAfterLogout() {
-
-
     document.getElementById('loginForm').style.display = 'block';
     document.getElementById('main-content').style.display = 'none';
+    document.getElementById('welcome-logout-content').style.display = 'none';
 }
 
 

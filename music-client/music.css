@@ -2,6 +2,10 @@
   display: none;
 }
 
+#welcome-logout-content {
+  display: none;
+}
+
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
@@ -86,4 +90,47 @@ tr:nth-child(even) {
 
 #mainbody {
   margin-bottom: 300px;
+}
+
+.login-form form {
+  display: flex;
+  align-items: center;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+  margin-right: 5px;
+  height: 30px;
+}
+
+.login-form button {
+  padding: 5px 10px;
+  height: 35px;
+}
+
+ header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #f2f2f2;
+}
+
+.logo img {
+  height: 40px;
+}
+
+strong {
+  font-size: 20px;
+  color: rgb(255, 30, 83);
+}
+
+#welcome {
+  font-size: 20px;
+  color: rgb(255, 30, 83);
+}
+
+#logoutBtn {
+  padding: 5px 10px;
+  height: 35px;
 }

@@ -11,18 +11,26 @@
 </head>
 
 <body>
-    <div class="container" id="mainbody">
-        <div id="loginForm">
-            <input id="username" />
-            <input type="password" id="password" />
-            <button id="loginBtn">Login</button>
-            <div id="err"></div>
+    <header>
+        <div class="logo">
+          <img src="./images/logo.png" alt="Logo">
+          <strong><i>Music Box</i></strong>
         </div>
+        <div id="loginForm" class="login-form">
+            <input type="text" id="username" placeholder="username"/>
+            <input type="password" id="password" placeholder="password"/>
+            <button id="loginBtn">Login</button>
+            <div id="err"></div> 
+        </div>
+        <div id="welcome-logout-content">
+            <b id="welcome"></b>
+            <button id="logoutBtn">Logout</button>
+        </div>
+      </header>
+      
+    <div class="container" id="mainbody">
 
         <div id="main-content">
-            <div id="welcome"></div>
-            <button id="logoutBtn">Logout</button>
-
             <h2>Playlist</h2>
             <table id="songs">
             </table>
