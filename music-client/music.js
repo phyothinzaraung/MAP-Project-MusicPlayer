@@ -244,7 +244,7 @@ function showAfterLogin() {
     document.getElementById('myAudioFooter').style.display = 'flex';
     document.getElementById('welcome').innerText = `Welcome to the Music Box, ${sessionStorage.getItem('username')}  `;
     fetchSongs();
-    loadMyPlaylist("");
+    loadMyPlaylist();
 }
 
 function showAfterLogout() {
@@ -278,11 +278,10 @@ async function removeSong(songID) {
 
     let songs = await resp.json();
 
-    loadMyPlaylist(songID);
+    loadMyPlaylist();
 }
 
-async function addevent(songID) {
-
+async function addToMyPlaylist(songID) {
     let resp = await fetch(baseURL + "/playlist/add", {
         method: 'POST',
         headers: {
@@ -296,7 +295,7 @@ async function addevent(songID) {
 
     let songs = await resp.json();
 
-    loadMyPlaylist("");
+    loadMyPlaylist();
 
 }
 
@@ -327,7 +326,7 @@ async function fetchSongs() {
         <tr>
             <td>${song.title}</td>
             <td>${song.releaseDate}</td>
-            <td><a href='#' onclick="addevent('${song.id}')">Add to playlist</a></td>
+            <td><a href='#' onclick="addToMyPlaylist('${song.id}')">Add to playlist</a></td>
         </tr>
         `;
         document.getElementById('songs').innerHTML = html;
@@ -353,7 +352,7 @@ async function play(url,title,pIndex) {
     return false;
 }
 
-async function loadMyPlaylist(songID) {
+async function loadMyPlaylist() {
 
     const response = await fetch(baseURL + '/playlist', {
         headers: {
@@ -362,10 +361,6 @@ async function loadMyPlaylist(songID) {
     });
 
     let songs = await response.json();
-
-    if (songID != "") {
-        songs = songs.filter((song) => song.id != songID);
-    }
 
     myPlaylist = songs;
 
@@ -378,20 +373,24 @@ async function loadMyPlaylist(songID) {
         `;
 
     var pIndex = 0;
-    
-    if(songs.length == 0) {
-        return;
-    }
 
     songs.forEach(song => {
         html += `
         <tr>
             <td>${song.title}</td>
-            <td><a href='#' onclick="removeSong('${song.id}')">Remove from list</a></td>
+            <td><a href='#' onclick="removeSong('${song.songId}')">Remove from list</a></td>
             <td><a href="" onclick="return playClick(event,'${song.urlPath}','${song.title}',${pIndex})">Play</a></td>
         </tr>
         `;
         pIndex = pIndex + 1;
     })
     document.getElementById('myPlaylist').innerHTML = html;
+
+    if(songs.length == 0) {
+        document.getElementById("no_songs").style.display = 'flex';
+        document.getElementById("myPlaylist").style.display = 'none';
+    }else{
+        document.getElementById("no_songs").style.display = 'none';
+        document.getElementById("myPlaylist").style.display = 'block';
+    }
 }
