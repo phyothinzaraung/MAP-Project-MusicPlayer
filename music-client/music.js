@@ -14,19 +14,9 @@ var repeatOnce = false;
 window.onload = function () {
     document.getElementById('loginBtn').onclick = login;
     document.getElementById('logoutBtn').onclick = logout;
-    // if (sessionStorage.getItem('my-token') != "") {
-    //     showAfterLogin();
-    //     initPlayerView();
-    // }
-
-}
-
-
-function getRepeatStep() {
-
-    const repeatStepSelect = document.getElementById('repeatStep');
-    const selectedValue = repeatStepSelect.value;
-    return selectedValue;
+    document.getElementById('searchBar').onkeyup = function(event) {
+        fetchSongs(event.target.value);
+    }
 }
 
 function logout() {
@@ -41,18 +31,6 @@ function playNow() {
         song = myPlaylist[currentIndex];
         play(song.urlPath,song.title,currentIndex);
     }
-    // else {
-    //     if(isRepeatOnce()) {
-    //         currentIndex = 0;
-    //         playNow();
-    //     }
-    //     // var step = getRepeatStep();
-    //     // if(step == 2) {
-    //     //     currentIndex = 0;
-    //     //     playNow();
-    //     // }
-
-    // }
 }
 
 function isShuffle() {
@@ -243,7 +221,7 @@ function showAfterLogin() {
     document.getElementById('welcome-logout-content').style.display = 'block';
     document.getElementById('myAudioFooter').style.display = 'flex';
     document.getElementById('welcome').innerText = `Welcome to the Music Box, ${sessionStorage.getItem('username')}  `;
-    fetchSongs();
+    fetchSongs("");
     loadMyPlaylist();
 }
 
@@ -302,8 +280,8 @@ async function addToMyPlaylist(songID) {
 var baseURL = "http://localhost:3000/api";
 var mp3BaseUrl = "http://localhost:3000/";
 
-async function fetchSongs() {
-    const response = await fetch(baseURL + '/music', {
+async function fetchSongs(keyword) {
+    const response = await fetch(baseURL + '/music?search=' + keyword, {
         headers: {
             'Authorization': `Bearer ${sessionStorage.getItem('my-token')}`
         }
@@ -388,9 +366,9 @@ async function loadMyPlaylist() {
 
     if(songs.length == 0) {
         document.getElementById("no_songs").style.display = 'flex';
-        document.getElementById("myPlaylist").style.display = 'none';
+        document.getElementById("myPlayListContainer").style.display = 'none';
     }else{
         document.getElementById("no_songs").style.display = 'none';
-        document.getElementById("myPlaylist").style.display = 'block';
+        document.getElementById("myPlayListContainer").style.display = 'block';
     }
 }
