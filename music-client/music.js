@@ -27,6 +27,9 @@ function logout() {
 }
 
 function playNow() {
+    if(isShuffle()) {
+        currentIndex = Math.floor(Math.random() * myPlaylist.length);
+    }
     if(myPlaylist.length > currentIndex) {
         song = myPlaylist[currentIndex];
         play(song.urlPath,song.title,currentIndex);
