@@ -128,7 +128,7 @@ function initPlayerView() {
 
 
 
-
+    durationDisplay.textContent = "00:00";
 
     audioPlayer.addEventListener('timeupdate', function () {
         const currentTime = formatTime(audioPlayer.currentTime);
@@ -155,11 +155,20 @@ function initPlayerView() {
 
     });
 
+    audioPlayer.addEventListener('ended', playFromFirstSong);
+
 
     seekBar.addEventListener('input', function () {
         const seekTime = (audioPlayer.duration / 100) * seekBar.value;
         audioPlayer.currentTime = seekTime;
     });
+}
+
+function playFromFirstSong() {
+    if(currentIndex >= myPlaylist.length) {
+        currentIndex = 0;
+        playNow();
+    }
 }
 
 function next() {
@@ -227,12 +236,12 @@ async function login() {
 
 function showAfterLogin() {
 
-
+    document.getElementById('username').value = "";
+    document.getElementById('password').value = "";
     document.getElementById('loginForm').style.display = 'none';
     document.getElementById('main-content').style.display = 'block';
     document.getElementById('welcome-logout-content').style.display = 'block';
     document.getElementById('myAudioFooter').style.display = 'flex';
-    // document.getElementById('myaudioplayer').style.display = 'block';
     document.getElementById('welcome').innerText = `Welcome to the Music Box, ${sessionStorage.getItem('username')}  `;
     fetchSongs();
     loadMyPlaylist("");
@@ -243,6 +252,14 @@ function showAfterLogout() {
     document.getElementById('main-content').style.display = 'none';
     document.getElementById('welcome-logout-content').style.display = 'none';
     document.getElementById('myAudioFooter').style.display = 'none';
+    stopAndClearAudio();
+}
+
+function stopAndClearAudio() {
+    var audio = document.getElementById('audioPlayer');
+    audio.pause();
+    audio.currentTime = 0;
+    musicTitleMsg = "No Title"
 }
 
 
