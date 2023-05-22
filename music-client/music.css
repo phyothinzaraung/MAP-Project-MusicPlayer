@@ -17,22 +17,6 @@ body {
   color: red
 }
 
-/* table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
-} */
-
 .container {
   display: flex;
   margin-top: 0px;
@@ -54,18 +38,17 @@ tr:nth-child(even) {
 
 .search-container {
   position: relative;
-  width: 300px; /* Adjust the width as needed */
+  width: 300px; 
   margin-left: 20px;
   margin-top: 10px;
 }
 
-/* The search input */
 .search-input {
   width: 100%;
-  padding: 8px 16px; /* Adjust the padding as needed */
-  font-size: 16px; /* Adjust the font size as needed */
-  border: 1px solid #ccc; /* Adjust the border styles as needed */
-  border-radius: 4px; /* Adjust the border radius as needed */
+  padding: 8px 16px; 
+  font-size: 16px; 
+  border: 1px solid #ccc; 
+  border-radius: 4px; 
 }
 
 
@@ -92,49 +75,9 @@ tr:nth-child(even) {
   margin-bottom: 10px;
 }
 
-
-#progressBarContainer {
-  width: 200px;
-  height: 10px;
-  background-color: #ccc;
-}
-
-#progressBar {
-  height: 100%;
-  width: 0%;
-  background-color: #4CAF50;
-}
-
 .btn {
   border: 0px;
   background-color: transparent;
-}
-
-#myaudioplayer {
-  display: none;
-  margin-top: 5px;
-  width: 100%;
-  height: 100px;
-  background: #CCC;
-  border-top: 1px solid #ddd;
-  position: fixed;
-  bottom: 0px;
-  left: 0;
-  align-items: center;
-}
-
-#moveCenter {
-  padding: 10px;
-  margin: 0px auto;
-  width: 300px;
-}
-
-#shuffleImage {
-  cursor: pointer;
-}
-
-#shuffle:checked+#shuffleImage {
-  content: url("images/shuffle_on.png");
 }
 
 #seekBar {
@@ -159,12 +102,8 @@ tr:nth-child(even) {
   text-align: center;
 }
 
-/* .music-container {
-  padding: 5px;
-} */
-
 #mainbody {
-  margin-bottom: 80px;
+  margin-bottom: 40px;
 }
 
 .login-form form {
@@ -177,11 +116,6 @@ tr:nth-child(even) {
   margin-right: 5px;
   height: 30px;
 }
-
-/* .login-form button {
-  padding: 5px 10px;
-  height: 35px;
-} */
 
 .login-form button {
   background-color: rgb(255, 30, 83);

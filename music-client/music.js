@@ -35,7 +35,6 @@ function playNow() {
 
 function isShuffle() {
     return shuffle;
-
 }
 
 function isRepeatOnce() {
@@ -124,10 +123,6 @@ function initPlayerView() {
             if(!isRepeatOnce()) {
                 currentIndex = currentIndex + 1;
             }
-            // var step = getRepeatStep();
-            // if(step != 3) {
-            //     currentIndex = currentIndex + 1;
-            // }
             playNow();
         }
 
@@ -199,12 +194,6 @@ async function login() {
     if (result.status) {
         document.getElementById('err').innerText = result.message;
     } else {
-        //save token to session storage
-        //hide login form
-        //display logout button
-        //pull song you may interested
-        //pull playlist of the current user
-        
         sessionStorage.setItem('my-token', result.accessToken);
         sessionStorage.setItem('username', result.username);
         showAfterLogin();
@@ -239,8 +228,6 @@ function stopAndClearAudio() {
     audio.currentTime = 0;
     musicTitleMsg = "No Title"
 }
-
-
 
 async function removeSong(songID) {
     let resp = await fetch(baseURL + "/playlist/remove", {
@@ -319,8 +306,6 @@ async function playClick(event,url,title,pIndex) {
 
 async function play(url,title,pIndex) {
     let mp3 = mp3BaseUrl + url;
-    console.log(mp3);
-
     var audio = document.getElementById("audioPlayer");
     audio.src = mp3;
     audio.play();
