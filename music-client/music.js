@@ -212,7 +212,8 @@ function showAfterLogin() {
     document.getElementById('main-content').style.display = 'block';
     document.getElementById('welcome-logout-content').style.display = 'block';
     document.getElementById('myAudioFooter').style.display = 'flex';
-    document.getElementById('welcome').innerText = `Welcome to the Music Box, ${sessionStorage.getItem('username')}  `;
+    document.getElementById('welcome').innerText = `Welcome to the Music Box, ${sessionStorage.getItem('username')}`;
+    document.getElementById('err').style.display = 'none';
     fetchSongs("");
     loadMyPlaylist();
 }
