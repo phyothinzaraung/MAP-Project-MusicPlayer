@@ -56,31 +56,25 @@ function initPlayerView() {
 
     nextButton = document.getElementById("nextButton");
     preButton = document.getElementById("preButton");
-    var repeatButton = document.getElementById("repeatButton");
-    
-    repeatButton.addEventListener('click', function() {
-        if(repeatOnce) {
-            repeatButton.innerHTML = '<img src="images/repeat-once-off.png">';
+
+    var featureButton = document.getElementById('featureButton');
+    featureButton.addEventListener('click', function() {
+        if(featureButton.innerHTML === '<img src="images/repeat-once-on.png">') {
+            featureButton.innerHTML = '<img src="images/shuffle_on.png">';
+            //do shffle function here
+            repeatOnce = false;
+            shuffle = true;
+        } else if(featureButton.innerHTML === '<img src="images/shuffle_on.png">') {
+            featureButton.innerHTML = '<img src="images/repeat.png">';
+            //do repeat all function here
+            repeatOnce = false;
+            shuffle = false;
         } else {
-            repeatButton.innerHTML = '<img src="images/repeat-once-on.png">';
+            featureButton.innerHTML = '<img src="images/repeat-once-on.png">';
+            // do repeat one function here
+            repeatOnce = true;
+            shuffle = false;
         }
-
-        repeatOnce = !repeatOnce;
-    });
-
-    var shuffleButton = document.getElementById("shuffleButton");
-
-
-    shuffleButton.addEventListener('click', function () {
-        
-        if(shuffle) {
-            shuffleButton.innerHTML = '<img src="images/shuffle_off.png">';
-        }
-        else {
-            shuffleButton.innerHTML = '<img src="images/shuffle_on.png">';
-        }
-
-        shuffle = !shuffle;
     });
 
     playPauseButton.addEventListener('click', function () {
